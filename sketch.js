@@ -18,29 +18,17 @@ function preload() {
   M = loadImage('img/moon.png');
 }
 
-function startMic() {
-  if (!micStarted) {
-    getAudioContext().resume();
-    mic.start();
-  } else {
-    mic.stop();
-  }
-
-  micStarted = !micStarted;
-}
 
 
 function setup() {
   createCanvas(375, 812);
   mic = new p5.AudioIn();
-  //mic.start();
-//  getAudioContext().resume();
+  mic.start();
+  getAudioContext().resume();
 
   angleMode(DEGREES);
   imageMode(CENTER);
-  startMicButton = createButton("Start Mic").position(20, 10).mousePressed(startMic);
-
-  audioContext = getAudioContext();
+ 
 }
 
 
