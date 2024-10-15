@@ -4,6 +4,8 @@ let mode = 0;
 let micLevel =0;
 let audioContext;
 let micStarted = false;
+let curState = 1;
+
 
 function preload() {
   B = loadImage('img/mount-B.png');
@@ -18,6 +20,16 @@ function preload() {
   M = loadImage('img/moon.png');
 }
 
+function startMic() {
+  if (!micStarted) {
+    getAudioContext().resume();
+    mic.start();
+  } else {
+    mic.stop();
+  }
+
+  micStarted = !micStarted;
+}
 
 
 function setup() {
@@ -28,16 +40,31 @@ function setup() {
 
   angleMode(DEGREES);
   imageMode(CENTER);
- 
+  //startMicButton = createButton("Start Mic").position(20, 10).mousePressed(startMic);
+
+  audioContext = getAudioContext();
 }
 
 
 function draw(){
 
-  micLevel = mic.getLevel();
-  //mountain();
+ 
+  if(curState ==1) stage1();
+  if(curState ==2) stage2();
+  
+  
+}
 
-  if (frameCount % 180 == 0){
+
+
+function stage1(){
+  background(200);
+  image(M,150,200);
+}
+
+function stage2(){
+  micLevel = mic.getLevel();
+    if (frameCount % 180 == 0){
       mode++;
   }
   if (mode == 0){
@@ -58,6 +85,17 @@ function draw(){
 }
 
 
+function mousePressed() {
+  if (
+    mouseX > 0 &&
+    mouseX < windowWidth &&
+    mouseY > 0 &&
+    mouseY < windowHeight
+  ) {
+    curState = 2;
+
+  }
+}
 
 function mountain(){
   background('#C9E5FF');
