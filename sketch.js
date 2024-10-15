@@ -95,7 +95,8 @@ function mousePressed() {
     mouseY < windowHeight
   ) {
     curState = 2;
-
+    let fs = fullscreen();
+    fullscreen(!fs);
   }
 }
 
