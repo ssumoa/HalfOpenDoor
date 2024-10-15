@@ -36,11 +36,11 @@ function setup() {
   createCanvas(375, 812);
   mic = new p5.AudioIn();
   mic.start();
-//  getAudioContext().resume();
+  getAudioContext().resume();
 
   angleMode(DEGREES);
   imageMode(CENTER);
-  //startMicButton = createButton("Start Mic").position(20, 10).mousePressed(startMic);
+  startMicButton = createButton("Start Mic").position(20, 10).mousePressed(startMic);
 
   audioContext = getAudioContext();
 }
