@@ -24,7 +24,7 @@ function setup() {
   createCanvas(375, 812);
   mic = new p5.AudioIn();
   mic.start();
-  getAudioContext().resume();
+//  getAudioContext().resume();
 
   angleMode(DEGREES);
   imageMode(CENTER);
